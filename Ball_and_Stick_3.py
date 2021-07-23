@@ -1,7 +1,8 @@
 #Import modules and files 
-from neuron import h, gui
-h.load_file('stdrun.hoc')
+from neuron import h
+from neuron import gui
 import matplotlib.pyplot as plt
+h.load_file('stdrun.hoc')
 
 #Generic Cell class
 class Cell:
