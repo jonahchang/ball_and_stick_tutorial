@@ -1,9 +1,10 @@
 #import necessary modules / files
-from neuron import h, gui 
+from neuron import h
+from neuron import gui 
 import matplotlib.pyplot as plt
 h.load_file('stdrun.hoc')
 
-#Define Class
+#Ball And Stick Class
 class BallAndStick:
     def __init__(self, gid):
         self._gid = gid
@@ -49,14 +50,12 @@ t = h.Vector().record(h._ref_t)
 dend_v = h.Vector().record(my_cell.dend(0.5)._ref_v)
 
 
-#Running Simulation
+#Simulation
 h.finitialize(-65)
 h.continuerun(40)
 
-#Making Figure   
-#ps = h.PlotShape(True)
 
-#Plotting (searched online to find how to graph with Matplotlib)
+#Plot
 plt.figure()
 plt.xlabel('t (ms)')
 plt.ylabel('v (mV)')
