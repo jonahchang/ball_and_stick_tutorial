@@ -1,7 +1,8 @@
 #IMport modules / load files
-from neuron import h, gui
-h.load_file('stdrun.hoc')
+from neuron import h
+from neuron import gui
 import matplotlib.pyplot as plt
+h.load_file('stdrun.hoc')
 
 #Generic Cell Class
 class Cell:
@@ -43,7 +44,7 @@ class Cell:
                 yprime = x * s + y * c
                 sec.pt3dchange(i, xprime, yprime, sec.z3d(i), sec.diam3d(i))
     
-#Ball_AndSticks Class (subclass of Cell class)
+#Ball_AndSticks Class
 class BallAndStick(Cell):
     name = 'BallAndStick'
     def _setup_morphology(self):
@@ -82,7 +83,7 @@ my_cells = create_n_BallAndStick(7, 50)
 ps = h.PlotShape(True)
 ps.show(0)
 
-#Cell Stimulation 
+#Stimulation 
 stim = h.NetStim() # Make a new stimulator
 syn_ = h.ExpSyn(my_cells[0].dend(0.5))
 stim.number = 1
@@ -122,7 +123,7 @@ ax2.set_ylabel(h.units('ExpSyn.i'))
 ax2.set_xlabel('time (ms)')
 plt.show()
 
-#Connecting the Cells
+#Connect the Cells
 syns = []
 netcons = []
 for source, target in zip(my_cells, my_cells[1:] + [my_cells[0]]):
